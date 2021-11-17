@@ -8,7 +8,7 @@
           drag
           multiple
           action="/"
-          :before-upload="befUpload"     
+          :before-upload="befUpload" 
         >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -18,7 +18,7 @@
     </el-row>
     <el-divider></el-divider>
     <div style="text-align: center; padding-bottom: 20px; font-size: 14px">
-      仅支持视频和图片,以及5M的大小限制 
+      仅支持视频和图片,以及5M的大小限制
     </div>
     <el-row style="padding: 0 30px; display: grid; place-items: center">
       <el-col :span="10" class="resimg">
