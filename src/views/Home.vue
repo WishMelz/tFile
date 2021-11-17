@@ -3,7 +3,7 @@
     <el-row style="text-align: center">
       <el-col>
         <el-upload
-          style="width: 100%"   
+          style="width: 100%"     
           class="upload-demo"
           drag
           multiple
