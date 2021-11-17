@@ -18,7 +18,7 @@
     </el-row>
     <el-divider></el-divider>
     <div style="text-align: center; padding-bottom: 20px; font-size: 14px">
-      仅支持视频和图片,以及5M的大小限制
+      仅支持视频和图片,以及5M的大小限制 
     </div>
     <el-row style="padding: 0 30px; display: grid; place-items: center">
       <el-col :span="10" class="resimg">
