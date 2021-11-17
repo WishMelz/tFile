@@ -23,20 +23,20 @@ yarn build
 因为`telegra.ph`的原因, 以及它上传`api`跨域的问题. 所以使用`nginx`代理如下⬇️
 
 ```nginx
-   server {
-  	    listen 80;
-  	    server_name xx.xxxx.com; # 这个是域名
-	      location /upload {
-        add_header Access-Control-Allow-Origin *;
-        add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
-        add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
-		     if ($request_method = 'OPTIONS') {
-		        return 204;
-		    }
-	        proxy_pass https://telegra.ph/upload;
-	        proxy_redirect default;
-       }
+server {
+  	listen 80;
+  	server_name xx.xxxx.com; # 这个是域名
+	  location /upload {
+    add_header Access-Control-Allow-Origin *;
+    add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+    add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+		if ($request_method = 'OPTIONS') {
+		    return 204;
+		}
+	     proxy_pass https://telegra.ph/upload;
+	     proxy_redirect default;
     }
+}
 ```
 
 这个是只代理了上传的接口, 当然了你还可以直接代理整个网站,在国内也能用.
@@ -47,6 +47,10 @@ location / {
     proxy_redirect default;
 }
 ```
+
+修改一下图片的路径 `views/Home.vue`
+
+![](https://telegra.ph/file/13c91b5939c02922df118.png)
 
 如果想批量上传:
 
