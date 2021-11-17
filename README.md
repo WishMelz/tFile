@@ -2,6 +2,8 @@
 
 使用 `https://telegra.ph` 的文件上传接口,上传自己的图片或者视频! [~~你可以理解为白嫖~~]
 
+https://wishmelz.github.io/tFile/
+
 ### 启动运行
 
 ```
