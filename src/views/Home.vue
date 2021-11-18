@@ -29,6 +29,14 @@
           </template>
         </el-input>
       </el-col>
+       <el-col :span="10" class="resimg">
+        <el-input v-model="resUrl.md">
+          <template slot="prepend">Markdown</template>
+          <template slot="append">
+            <el-button class="copy" @click="copy(resUrl.md)">复制</el-button>
+          </template>
+        </el-input>
+      </el-col>
       <el-col :span="10" style="text-align: center; padding: 20px">
         <img
           v-if="resUrl.type == 'image'"
@@ -55,6 +63,7 @@ export default {
       resUrl: {
         url: "",
         type: "",
+        md:""
       },
       fullscreenLoading: false,
     };
@@ -120,6 +129,7 @@ export default {
             return;
           }
           this.resUrl.url = `https://telegra.ph${res[0].src}`;
+          this.resUrl.md = `![wishtfile](https://telegra.ph${res[0].src})`;
           this.$message.success("上传成功");
         })
         .catch((err) => {

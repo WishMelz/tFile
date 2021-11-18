@@ -26,7 +26,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: Install & Build # 執行指令
+      - name: Install & Build # 指令
         run: |
           npm install
           npm run build 
@@ -35,6 +35,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # Settings > Secret 建立的 ACCESS_TOKEN，推同個 repo 的話可以不需要
-          BRANCH: gh-pages # deploy 到 gh-pages 這個分支
-          FOLDER: docs # build 後的資料夾
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # Settings > Secret 建立的 ACCESS_TOKEN，推同个 repo 可以不需要
+          BRANCH: gh-pages # deploy 到 gh-pages 这个分支
+          FOLDER: docs # build 后的文件夹
