@@ -37,4 +37,4 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # Settings > Secret 建立的 ACCESS_TOKEN，推同个 repo 可以不需要
           BRANCH: gh-pages # deploy 到 gh-pages 这个分支
-          FOLDER: docs # build 后的文件夹
+          FOLDER: dist # build 后的文件夹
