@@ -1,14 +1,27 @@
 <template>
   <div class="upload" v-loading.fullscreen.lock="fullscreenLoading">
+    <a href="https://github.com/WishMelz/tFile">
+      <img
+        style="
+          position: fixed;
+          top: 0px;
+          right: 0px;
+          border: 0px;
+          width: 150px;
+        "
+        src="https://cdn.jsdelivr.net/gh/WishMelz/file@master/messy/614b81962449bb3430193bdd6eaa3c7f.png"
+        alt="Fork me on GitHub"
+      />
+    </a>
     <el-row style="text-align: center">
       <el-col>
         <el-upload
-          style="width: 100%"     
+          style="width: 100%"
           class="upload-demo"
           drag
           multiple
           action="/"
-          :before-upload="befUpload"     
+          :before-upload="befUpload"
         >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -18,7 +31,7 @@
     </el-row>
     <el-divider></el-divider>
     <div style="text-align: center; padding-bottom: 20px; font-size: 14px">
-      仅支持视频和图片,以及5M的大小限制  
+      仅支持视频和图片,以及5M的大小限制
     </div>
     <el-row style="padding: 0 30px; display: grid; place-items: center">
       <el-col :span="10" class="resimg">
@@ -29,7 +42,7 @@
           </template>
         </el-input>
       </el-col>
-       <el-col :span="10" class="resimg">
+      <el-col :span="10" class="resimg">
         <el-input v-model="resUrl.md">
           <template slot="prepend">Markdown</template>
           <template slot="append">
@@ -52,6 +65,15 @@
         ></video>
       </el-col>
     </el-row>
+    <footer>
+      <span>
+        <a href="https://github.com/WishMelz/imgurl">Github图片管理系统</a>
+      </span>
+      |
+      <span>
+        <a href="https://github.com/WishMelz/tFile">TG视频/图片床</a>
+      </span>
+    </footer>
   </div>
 </template>
 
@@ -63,7 +85,7 @@ export default {
       resUrl: {
         url: "",
         type: "",
-        md:""
+        md: "",
       },
       fullscreenLoading: false,
     };
@@ -159,9 +181,25 @@ export default {
 
 <style scoped>
 .upload {
-    margin-top: 60px;
+  /* margin-top: 60px; */
+  padding-top: 60px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 .pic {
   max-width: 100%;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #c0c4cc;
+}
+footer a {
+  list-style: none;
+  text-decoration: none;
+  color: #909399;
 }
 </style>
