@@ -1,69 +1,43 @@
-# tFile
+# tgFile
 
-使用 `https://telegra.ph` 的文件上传接口,上传自己的图片或者视频! [~~你可以理解为白嫖~~]
+话不多说,直接开始!!!
 
-https://wishmelz.github.io/tFile/
+> 在频道中发布的消息,  复制它的消息链接在浏览器中打开,  复制这个消息中的图片的外链
 
-### 启动运行
+##1.创建一个频道
 
-```
-yarn install
-```
+是频道, 不是群组.
 
-```
-yarn serve
-```
+<img src="https://cdn.jsdelivr.net/gh/WishMelz/file@master/messy/4d00a3a59f64317e4f886b526a50379f.png" alt="wishimg" style="zoom:33%;" />
 
-```
-yarn build
-```
+## 2.发送一个图片并获取消息链接
 
-![](https://telegra.ph/file/fa304e656fdf593b1a90c.png)
+<img src="https://cdn.jsdelivr.net/gh/WishMelz/file@master/messy/ed8b36962d2005b1ad4a53d3a0820fb7.png" alt="wishimg" style="zoom:25%;" />
 
-因为`telegra.ph`的原因, 以及它上传`api`跨域的问题. 所以使用`nginx`代理如下⬇️
+⚠️ 这个压缩图片要点上. 不然就是一个文件链接了.
 
-```nginx
-server {
-  	listen 80;
-  	server_name xx.xxxx.com; # 这个是域名
-	  location /upload {
-    add_header Access-Control-Allow-Origin *;
-    add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
-    add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
-		if ($request_method = 'OPTIONS') {
-		    return 204;
-		}
-	     proxy_pass https://telegra.ph/upload;
-	     proxy_redirect default;
-    }
-}
-```
+<img src="https://cdn.jsdelivr.net/gh/WishMelz/file@master/messy/c4cbc5907887316d19e62f371c04d41a.png" alt="wishimg" style="zoom: 25%;" />
 
-这个是只代理了上传的接口, 当然了你还可以直接代理整个网站,在国内也能用.
+这个时候获取的链接格式为: `https://t.me/tFileG/4 ` 这个tFileG是我这个频道ID.
 
-```nginx
-location / {
-    proxy_pass https://telegra.ph/;
-    proxy_redirect default;
-}
-```
+但是我们需要的链接的格式为: `https://t.me/s/tFileG/4`
 
-修改一下图片的路径 `views/Home.vue`
 
-![](https://telegra.ph/file/13c91b5939c02922df118.png)
 
-如果想批量上传:
+## 3.打开消息链接,拿到外链
 
-```Vue
-        <el-upload
-          style="width: 100%"
-          class="upload-demo"
-          drag
-          multiple
-          action="/"
-          :before-upload="befUpload"
-        >
-```
+<img src="https://cdn.jsdelivr.net/gh/WishMelz/file@master/messy/7c6f5501818d0105da8680ffc81c475e.png" alt="wishimg" style="zoom:25%;" />
 
-然后渲染在改成列表渲染!!
+<img src="https://cdn.jsdelivr.net/gh/WishMelz/file@master/messy/25cf2ab93902ce2033a0bf2f728f267b.png" alt="wishimg" style="zoom: 33%;" />
 
+选中这个图片, 右键检查.
+
+<img src="https://cdn.jsdelivr.net/gh/WishMelz/file@master/messy/033eeefe956d321b630a0ecec781a601.png" alt="wishimg" style="zoom:25%;" />
+
+然后就是这个样子.
+
+<img src="https://cdn.jsdelivr.net/gh/WishMelz/file@master/messy/557c08e726100ae2c94929b29b22f5d4.png" alt="wishimg" style="zoom:25%;" />
+
+选中这个A标签, 他个背景图片属性就是图片的外链.
+
+[2022年1月1日测试链接](https://cdn1.telesco.pe/file/dfzBAg97VfnMLTYPwXX9CuuCBTZU5yqC3_cgczxf47RBpWJ_9RBSnu7M4pZUBge6H-VqN9NjTTp1_rPQXbBMMWExsEd_m--o_9tW3FN3Qw2TtwiVWi_31gPKfVhNHY_vSckCWXX5IYG4MblXC37bVEOTB2OOWlXK1eRjPevTsCFM87rQH5Ps6b0UP1sfDpCMtLWAR26hxyNgLDRubF3XxVMnQIW7EJcASHDVFlQnUt_mi0pP_n4oyPHecoo3SNrKrb4PwnT9xAr9JrkCGiFGYsc6xMt78Axlyv25wI9BsIYzW_6A2RfcmxJzUhBgVJw4qRlqZUFUWXM0PkbnzvW7_g.jpg)
