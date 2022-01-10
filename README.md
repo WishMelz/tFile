@@ -4,6 +4,10 @@
 
 https://wishmelz.github.io/tFile/
 
+
+
+因为`telegra`有5M大小的限制, 所以我们可以用TG客户端的链接, TG客户端最大限制为2G!!!!  教程比较复杂[https://github.com/WishMelz/tFile/tree/tgFile]
+
 ### 启动运行
 
 ```
